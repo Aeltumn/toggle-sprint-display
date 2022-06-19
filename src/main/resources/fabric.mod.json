@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "toggle-sprint-display",
+  "version": "${version}",
+  "name": "Toggle Sprint Display",
+  "description": "Adds a HUD element that shows whether you're sprinting. ",
+  "authors": [
+    "Aeltumn"
+  ],
+  "contact": {},
+  "license": "LGPL-3.0",
+  "environment": "client",
+  "entrypoints": {
+  },
+  "mixins": [
+    "toggle-sprint-display.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.12.5",
+    "minecraft": ">=1.18.2"
+  }
+}
