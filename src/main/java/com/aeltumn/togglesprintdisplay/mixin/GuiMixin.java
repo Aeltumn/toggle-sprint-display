@@ -5,7 +5,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -26,8 +25,8 @@ public class GuiMixin {
         if (minecraft.options.renderDebug) return;
 
         boolean isSprinting = minecraft.options.keySprint.isDown();
-        boolean toggleSprint = minecraft.options.toggleSprint;
-        Component text = new TranslatableComponent("menu.toggle_sprint_display." + (toggleSprint ? "toggle" : "hold") + "_" + (isSprinting ? "on" : "off"));
+        boolean toggleSprint = minecraft.options.toggleSprint().get();
+        Component text = Component.translatable("menu.toggle_sprint_display." + (toggleSprint ? "toggle" : "hold") + "_" + (isSprinting ? "on" : "off"));
         int k = 16777215;
         font.drawShadow(poseStack, text, 7.5f, 7.5f, k);
     }
