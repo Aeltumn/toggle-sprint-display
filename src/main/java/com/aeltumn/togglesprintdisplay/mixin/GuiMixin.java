@@ -1,9 +1,9 @@
 package com.aeltumn.togglesprintdisplay.mixin;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +17,7 @@ public class GuiMixin {
     @Shadow @Final private Minecraft minecraft;
 
     @Inject(method = "renderSavingIndicator", at = @At("RETURN"))
-    private void injected(PoseStack poseStack, CallbackInfo ci) {
+    private void injected(GuiGraphics guiGraphics, CallbackInfo ci) {
         Gui gui = (Gui) ((Object) this);
         Font font = gui.getFont();
 
@@ -28,6 +28,6 @@ public class GuiMixin {
         boolean toggleSprint = minecraft.options.toggleSprint().get();
         Component text = Component.translatable("menu.toggle_sprint_display." + (toggleSprint ? "toggle" : "hold") + "_" + (isSprinting ? "on" : "off"));
         int k = 16777215;
-        font.drawShadow(poseStack, text, 7.5f, 7.5f, k);
+        guiGraphics.drawString(font, text, 7, 7, k);
     }
 }
