@@ -22,7 +22,7 @@ public class GuiMixin {
         Font font = gui.getFont();
 
         // Don't render when the debug screen is shown as it would overlap
-        if (minecraft.options.renderDebug) return;
+        if (minecraft.getDebugOverlay().showDebugScreen()) return;
 
         boolean isSprinting = minecraft.options.keySprint.isDown();
         boolean toggleSprint = minecraft.options.toggleSprint().get();
