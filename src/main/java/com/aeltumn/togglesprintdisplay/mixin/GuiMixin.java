@@ -1,5 +1,6 @@
 package com.aeltumn.togglesprintdisplay.mixin;
 
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
@@ -41,7 +42,7 @@ public abstract class GuiMixin {
     }
 
     @Unique
-    private void tsd$renderSprintingOverlay(GuiGraphics guiGraphics, float partialTicks) {
+    private void tsd$renderSprintingOverlay(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
         var minecraft = Minecraft.getInstance();
         var isSprinting = minecraft.options.keySprint.isDown();
         var toggleSprint = minecraft.options.toggleSprint().get();
