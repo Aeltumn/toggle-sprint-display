@@ -1,5 +1,6 @@
 package com.aeltumn.togglesprintdisplay.mixin;
 
+import com.aeltumn.togglesprintdisplay.config.ToggleSprintConfig;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -33,20 +34,34 @@ public abstract class GuiMixin {
         var minecraft = Minecraft.getInstance();
 
         // Check that the main GUI is not hidden
-        if (minecraft.options.hideGui) return;
+        if (minecraft.options.hideGui)
+            return;
 
         // Check that the debug screen is not up
-        if (this.getDebugOverlay().showDebugScreen()) return;
+        if (this.getDebugOverlay().showDebugScreen())
+            return;
 
         var isSprinting = minecraft.options.keySprint.isDown();
         var toggleSprint = minecraft.options.toggleSprint().get();
-        var text = Component.translatable("menu.toggle_sprint_display." + (toggleSprint ? "toggle" : "hold") + "_" + (isSprinting ? "on" : "off"));
+        var text = Component.translatable("menu.toggle_sprint_display." + (toggleSprint ? "toggle" : "hold") + "_"
+                + (isSprinting ? "on" : "off"));
 
         // If there is no text to be drawn, do nothing!
-        if (text.getString().isEmpty()) return;
+        if (text.getString().isEmpty())
+            return;
 
         var font = getFont();
+        var config = ToggleSprintConfig.getInstance();
+
+        int textWidth = font.width(text);
+        int textHeight = font.lineHeight;
+        int screenWidth = minecraft.getWindow().getGuiScaledWidth();
+        int screenHeight = minecraft.getWindow().getGuiScaledHeight();
+
+        int x = config.calculateX(screenWidth, textWidth);
+        int y = config.calculateY(screenHeight, textHeight);
+
         guiGraphics.nextStratum();
-        guiGraphics.drawString(font, text, 7, 7, -1);
+        guiGraphics.drawString(font, text, x, y, -1);
     }
 }

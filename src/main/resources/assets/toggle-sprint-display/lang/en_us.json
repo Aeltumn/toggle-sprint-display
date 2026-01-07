@@ -1,6 +1,26 @@
 {
-  "menu.toggle_sprint_display.toggle_on": "§7§oSprint Toggled",
-  "menu.toggle_sprint_display.toggle_off": "",
-  "menu.toggle_sprint_display.hold_on": "§7§oSprint Held",
-  "menu.toggle_sprint_display.hold_off": ""
+	"menu.toggle_sprint_display.toggle_on": "§7§oSprint Toggled",
+	"menu.toggle_sprint_display.toggle_off": "",
+	"menu.toggle_sprint_display.hold_on": "§7§oSprint Held",
+	"menu.toggle_sprint_display.hold_off": "",
+
+	"config.toggle_sprint_display.title": "Toggle Sprint Display Settings",
+	"config.toggle_sprint_display.category.position": "Position",
+
+	"config.toggle_sprint_display.anchor": "Screen Anchor",
+	"config.toggle_sprint_display.anchor.tooltip": "The corner or edge of the screen to anchor the display to",
+	"config.toggle_sprint_display.anchor.top_left": "Top Left",
+	"config.toggle_sprint_display.anchor.top_center": "Top Center",
+	"config.toggle_sprint_display.anchor.top_right": "Top Right",
+	"config.toggle_sprint_display.anchor.center_left": "Center Left",
+	"config.toggle_sprint_display.anchor.center": "Center",
+	"config.toggle_sprint_display.anchor.center_right": "Center Right",
+	"config.toggle_sprint_display.anchor.bottom_left": "Bottom Left",
+	"config.toggle_sprint_display.anchor.bottom_center": "Bottom Center",
+	"config.toggle_sprint_display.anchor.bottom_right": "Bottom Right",
+
+	"config.toggle_sprint_display.offset_x": "X Offset",
+	"config.toggle_sprint_display.offset_x.tooltip": "Horizontal offset from the anchor position (in pixels)",
+	"config.toggle_sprint_display.offset_y": "Y Offset",
+	"config.toggle_sprint_display.offset_y.tooltip": "Vertical offset from the anchor position (in pixels)"
 }

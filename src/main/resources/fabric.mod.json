@@ -1,23 +1,25 @@
 {
-  "schemaVersion": 1,
-  "id": "toggle-sprint-display",
-  "version": "${version}",
-  "name": "Toggle Sprint Display",
-  "description": "Adds a HUD element that shows whether you're sprinting. ",
-  "authors": [
-    "Aeltumn"
-  ],
-  "contact": {},
-  "license": "LGPL-3.0",
-  "icon": "assets/toggle-sprint-display/icon.png",
-  "environment": "client",
-  "entrypoints": {
-  },
-  "mixins": [
-    "toggle-sprint-display.mixins.json"
-  ],
-  "depends": {
-    "fabricloader": ">=0.16.14",
-    "minecraft": ">=1.21.6"
-  }
+	"schemaVersion": 1,
+	"id": "toggle-sprint-display",
+	"version": "${version}",
+	"name": "Toggle Sprint Display",
+	"description": "Adds a HUD element that shows whether you're sprinting. ",
+	"authors": ["Aeltumn"],
+	"contact": {},
+	"license": "LGPL-3.0",
+	"icon": "assets/toggle-sprint-display/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": ["com.aeltumn.togglesprintdisplay.ToggleSprintDisplayMod"],
+		"modmenu": ["com.aeltumn.togglesprintdisplay.config.ModMenuIntegration"]
+	},
+	"mixins": ["toggle-sprint-display.mixins.json"],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": ">=1.21.6"
+	},
+	"suggests": {
+		"modmenu": "*",
+		"cloth-config": "*"
+	}
 }
