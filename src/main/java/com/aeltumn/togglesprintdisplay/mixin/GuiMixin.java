@@ -18,9 +18,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class GuiMixin {
 
     @Shadow
-    public abstract DebugScreenOverlay getDebugOverlay();
-
-    @Shadow
     public abstract Font getFont();
 
     @Inject(method = "render", at = @At("TAIL"))
@@ -32,11 +29,14 @@ public abstract class GuiMixin {
     private void tsd$renderSprintingOverlay(GuiGraphics guiGraphics) {
         var minecraft = Minecraft.getInstance();
 
+        // If nothing is rendering, don't show!
+        if (minecraft.noRender) return;
+
+        // Don't show while still loading
+        if (!minecraft.isGameLoadFinished()) return;
+
         // Check that the main GUI is not hidden
         if (minecraft.options.hideGui) return;
-
-        // Check that the debug screen is not up
-        if (this.getDebugOverlay().showDebugScreen()) return;
 
         var isSprinting = minecraft.options.keySprint.isDown();
         var toggleSprint = minecraft.options.toggleSprint().get();
