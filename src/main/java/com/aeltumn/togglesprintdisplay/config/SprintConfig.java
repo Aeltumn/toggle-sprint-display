@@ -13,12 +13,12 @@ public class SprintConfig {
     private static final Gson GSON = new Gson();
     private static SprintConfig instance;
 
-    public VisualsType visualsType = VisualsType.ICON;
-    public Anchor anchor = Anchor.TOP_RIGHT;
+    public VisualsType visualsType = VisualsType.SHORT;
+    public Anchor anchor = Anchor.TOP_LEFT;
     public boolean showSprinting = true;
-    public boolean showSneaking = true;
+    public boolean showSneaking = false;
     public boolean showSwimming = true;
-    public boolean showDoll = true;
+    public boolean showDoll = false;
     public boolean dollBelow = false;
     public double positionX = 0.02;
     public double positionY = 0.03;
