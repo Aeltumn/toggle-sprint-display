@@ -4,12 +4,10 @@ import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.DebugScreenOverlay;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -20,24 +18,9 @@ public abstract class GuiMixin {
     @Shadow
     public abstract Font getFont();
 
-    @Inject(method = "render", at = @At("TAIL"))
-    public void render(GuiGraphics graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
-        tsd$renderSprintingOverlay(graphics);
-    }
-
-    @Unique
-    private void tsd$renderSprintingOverlay(GuiGraphics guiGraphics) {
+    @Inject(method = "extractSavingIndicator", at = @At("TAIL"))
+    public void render(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker, CallbackInfo ci) {
         var minecraft = Minecraft.getInstance();
-
-        // If nothing is rendering, don't show!
-        if (minecraft.noRender) return;
-
-        // Don't show while still loading
-        if (!minecraft.isGameLoadFinished()) return;
-
-        // Check that the main GUI is not hidden
-        if (minecraft.options.hideGui) return;
-
         var isSprinting = minecraft.options.keySprint.isDown();
         var toggleSprint = minecraft.options.toggleSprint().get();
         var text = Component.translatable("menu.toggle_sprint_display." + (toggleSprint ? "toggle" : "hold") + "_" + (isSprinting ? "on" : "off"));
@@ -46,7 +29,7 @@ public abstract class GuiMixin {
         if (text.getString().isEmpty()) return;
 
         var font = getFont();
-        guiGraphics.nextStratum();
-        guiGraphics.drawString(font, text, 7, 7, -1);
+        graphics.nextStratum();
+        graphics.text(font, text, 7, 7, -1);
     }
 }
