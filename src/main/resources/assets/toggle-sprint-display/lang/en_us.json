@@ -1,6 +1,56 @@
 {
-  "menu.toggle_sprint_display.toggle_on": "§7§oSprint Toggled",
-  "menu.toggle_sprint_display.toggle_off": "",
-  "menu.toggle_sprint_display.hold_on": "§7§oSprint Held",
-  "menu.toggle_sprint_display.hold_off": ""
+  "toggle_sprint_display.type.toggle": "Toggled",
+  "toggle_sprint_display.type.hold": "Held",
+  "toggle_sprint_display.type.sprint.long": "Sprint",
+  "toggle_sprint_display.type.sprint.short": "Sprinting",
+  "toggle_sprint_display.type.sprint.emoji": "\uD83C\uDFC3",
+  "toggle_sprint_display.type.shift.long": "Sneak",
+  "toggle_sprint_display.type.shift.short": "Sneaking",
+  "toggle_sprint_display.type.shift.emoji": "\uD83E\uDDB5",
+  "toggle_sprint_display.type.swim.regular": "Swimming",
+  "toggle_sprint_display.type.swim.emoji": "\uD83C\uDFCA",
+
+  "toggle_sprint_display.options.screen": "Toggle Sprint Display Settings",
+  "toggle_sprint_display.options.display": "Display Settings",
+  "toggle_sprint_display.options.positioning": "Position Settings",
+  "toggle_sprint_display.options.doll": "Paper Doll Settings",
+
+  "toggle_sprint_display.options.visuals_type.name": "Visual Style",
+  "toggle_sprint_display.options.visuals_type.tooltip": "Select which style is used for the on-screen visuals.",
+
+  "toggle_sprint_display.options.show_sprinting.name": "Show Sprinting",
+  "toggle_sprint_display.options.show_sprinting.tooltip": "Whether the sprinting state should be shown in the UI.",
+  "toggle_sprint_display.options.show_sneaking.name": "Show Sneaking",
+  "toggle_sprint_display.options.show_sneaking.tooltip": "Whether the sneaking state should be shown in the UI.",
+  "toggle_sprint_display.options.show_swimming.name": "Show Swimming",
+  "toggle_sprint_display.options.show_swimming.tooltip": "Whether the UI should show `Swimming` instead of `Sprinting` when in swimming mode.",
+
+  "toggle_sprint_display.options.anchor.name": "Anchor",
+  "toggle_sprint_display.options.anchor.tooltip": "Select which screen corner the visuals are positioned relative to.",
+  "toggle_sprint_display.options.position_x.name": "X Position",
+  "toggle_sprint_display.options.position_x.tooltip": "Controls the horizontal position of the visuals.",
+  "toggle_sprint_display.options.position_y.name": "Y Position",
+  "toggle_sprint_display.options.position_y.tooltip": "Controls the vertical position of the visuals.",
+  "toggle_sprint_display.options.scale.name": "Scale",
+  "toggle_sprint_display.options.scale.tooltip": "Controls the size of the visuals.",
+
+  "toggle_sprint_display.options.show_doll.name": "Show Paper Doll",
+  "toggle_sprint_display.options.show_doll.tooltip": "Shows a small version of the player character on-screen which shows you how others see you.",
+  "toggle_sprint_display.options.place_doll_below.name": "Below Text",
+  "toggle_sprint_display.options.place_doll_below.tooltip": "Places the paper doll beneath the other text instead of above.",
+
+  "toggle_sprint_display.options.simple_value": "%s: %s",
+
+  "toggle_sprint_display.options.enum.top_left": "Top Left",
+  "toggle_sprint_display.options.enum.top_right": "Top Right",
+  "toggle_sprint_display.options.enum.bottom_left": "Bottom Left",
+  "toggle_sprint_display.options.enum.bottom_right": "Bottom Right",
+
+  "toggle_sprint_display.options.enum.full": "Verbose",
+  "toggle_sprint_display.options.enum.short": "Short",
+  "toggle_sprint_display.options.enum.icon": "Icon",
+
+  "toggle_sprint_display.options.visuals_type.tooltip.full": "Shows the current state and method, e.g. Sprint Held, Sneak Toggled.",
+  "toggle_sprint_display.options.visuals_type.tooltip.short": "Briefly describes your current state, e.g. Sprinting, Sneaking.",
+  "toggle_sprint_display.options.visuals_type.tooltip.icon": "Shows emojis representing your current state, takes up the least space."
 }

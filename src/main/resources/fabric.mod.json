@@ -12,6 +12,9 @@
   "icon": "assets/toggle-sprint-display/icon.png",
   "environment": "client",
   "entrypoints": {
+    "modmenu": [
+      "com.aeltumn.togglesprintdisplay.integration.ModMenuIntegration"
+    ]
   },
   "mixins": [
     "toggle-sprint-display.mixins.json"
