@@ -40,6 +40,9 @@ public abstract class GuiMixin {
         var player = minecraft.player;
         if (player == null) return;
 
+        // Check that the main GUI is not hidden
+        if (minecraft.options.hideGui) return;
+
         var config = SprintConfig.get();
         var isSprinting = config.showSprinting && minecraft.options.keySprint.isDown();
         var isSneaking = config.showSneaking && minecraft.options.keyShift.isDown();
