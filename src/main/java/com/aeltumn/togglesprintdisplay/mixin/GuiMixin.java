@@ -99,12 +99,6 @@ public abstract class GuiMixin {
             }
         }
 
-        // Determine the corner anchor to render at
-        var size = new Vector2i((int) (graphics.guiWidth() / config.scale), (int) (graphics.guiHeight() / config.scale));
-        var position = config.anchor.apply(size, config.getPosition(graphics));
-        var x = position.x;
-        var y = position.y;
-
         graphics.pose().pushMatrix();
         graphics.pose().scale((float) config.scale);
 
@@ -121,6 +115,9 @@ public abstract class GuiMixin {
                 width = lineWidth;
             }
         }
+
+        // Add spacing between text and doll if there is text only!
+        var spacing = text.isEmpty() ? 0 : 8;
 
         LivingEntityRenderState livingRenderState = null;
         Quaternionf rotation = null, xRotation = null;
@@ -145,9 +142,18 @@ public abstract class GuiMixin {
             livingRenderState.boundingBoxHeight /= livingRenderState.scale;
             livingRenderState.scale = (float) config.scale;
 
+            // Set the width and height of the entire UI properly based on the doll's size
+            var dollWidth = (int) (config.scale * 16f * livingRenderState.boundingBoxWidth);
+            width = Math.max(width, dollWidth);
             dollHeight = (int) (config.scale * 16f * livingRenderState.boundingBoxHeight);
-            height += 8 + dollHeight;
+            height += spacing + dollHeight;
         }
+
+        // Determine the final rendering position
+        var size = new Vector2i((int) (graphics.guiWidth() / config.scale), (int) (graphics.guiHeight() / config.scale));
+        var position = config.anchor.apply(size, config.getPosition(graphics, new Vector2i(width, height)));
+        var x = position.x;
+        var y = position.y;
 
         // Determine the top left corner to draw relative to
         var topLeftX = x;
@@ -160,7 +166,7 @@ public abstract class GuiMixin {
             // If the doll goes above, we move down the text to below it!
             var lineY = topLeftY;
             if (config.showDoll && !config.dollBelow) {
-                lineY += dollHeight + 8;
+                lineY += dollHeight + spacing;
             }
 
             graphics.nextStratum();

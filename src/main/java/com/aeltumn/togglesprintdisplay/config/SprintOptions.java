@@ -108,10 +108,10 @@ public class SprintOptions {
             SprintOptions::valueLabel,
             new OptionInstance.IntRange(0, 100).xmap(it -> (double) it / 100.0, it -> (int) (it * 100.0), true),
             Codec.doubleRange(0.0, 1.0),
-            SprintConfig.get().positionX,
+            SprintConfig.get().posX,
             (newValue) -> {
                 var config = SprintConfig.get();
-                config.positionX = newValue;
+                config.posX = newValue;
                 config.save();
             });
 
@@ -121,10 +121,10 @@ public class SprintOptions {
             SprintOptions::valueLabel,
             new OptionInstance.IntRange(0, 100).xmap(it -> (double) it / 100.0, it -> (int) (it * 100.0), true),
             Codec.doubleRange(0.0, 1.0),
-            SprintConfig.get().positionY,
+            SprintConfig.get().posY,
             (newValue) -> {
                 var config = SprintConfig.get();
-                config.positionY = newValue;
+                config.posY = newValue;
                 config.save();
             });
 
